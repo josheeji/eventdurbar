@@ -12,7 +12,7 @@
     <meta name="author" content="Conference Nepal" />
 
     <!-- Page Title -->
-    <title>Conference Nepal</title>
+    <title>Event Durbar</title>
 
     <!-- Favicon and Touch Icons -->
     <link href="https://conferencenepal.com/images/favicon.png" rel="shortcut icon" type="image/png">

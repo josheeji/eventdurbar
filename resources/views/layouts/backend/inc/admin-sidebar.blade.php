@@ -26,6 +26,13 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
+                    <a href="/admin/banners">
+                        <i class="bi bi-circle"></i><span>Banners</span>
+                    </a>
+                </li>
+               
+               
+                <li>
                     <a href="/admin/event-types">
                         <i class="bi bi-circle"></i><span>Events Types</span>
                     </a>

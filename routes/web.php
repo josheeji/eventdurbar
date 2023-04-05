@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\DashboardController as AuthDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\EventCertificateTemplateController;
 use App\Http\Controllers\EventController;
@@ -121,7 +122,29 @@ Route::get(
     [ParticipantController::class, 'generatePdf']
 );
 
+Route::prefix('/admin/banners')->group(function(){
+    Route::get('/',[BannerController::class, 'index']);
+    Route::get('/create', [BannerController::class, 'create']);
+    Route::post('/', [BannerController::class, 'store']);
+    Route::get('/{id}/edit', [BannerController::class, 'edit']);
+    Route::put('/{id}', [BannerController::class, 'update']);
+    Route::delete('/{id}', [BannerController::class, 'destroy']);
+});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// it is used to migrate db:Seed without command when we run /manage-site url
 Route::get('/manage-site', function () {
     Artisan::call('migrate');
     Artisan::call('db:seed');
