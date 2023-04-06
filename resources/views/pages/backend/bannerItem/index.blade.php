@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Banner Table')
+@section('title', 'Banner Item Table')
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <form action={{ '/admin/banners' }} method="POST" id="delete_form">
+                <form action={{ '/admin/banners/' }} method="POST" id="delete_form">
                     @csrf
                     @method('delete')
                     <div class="modal-header">
@@ -35,7 +35,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Banner Table
+                <h5 class="card-title">Banner Item Table
 
                 </h5>
 
@@ -44,43 +44,58 @@
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
                 <div class="card-body">
-                    <a href="/admin/banners/create" class="btn btn-primary btn-sm">
-                        <h6>Add New Banner</h6>
+                    <a href="/admin/banners/{{ $banner->id }}/banner-items/create" class="btn btn-primary btn-sm">
+                        <h6>Add New Banner Item</h6>
                     </a>
                     <hr>
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
+                                <th width="150">S. No.</th>
+                                
+                                <th scope="col">Heading</th>
 
-                                <th scope="col" width="10%">S.No.</th>
-                                <th scope="col">Name</th>
-                                <th class="text-center" width="170">Action</th>
+                                <th scope="col">Btn Link</th>
 
+                                <th scope="col"> Short Discription</th>
+
+                                <th scope="col"> Image</th>
+
+                                <th class="text-center" width="200">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $i=1 @endphp
 
-                            @foreach ($banners as $banner)
+                            @foreach ($bannerItems as $bannerItem)
                                 <tr>
                                     <td>{{ $i++ }} </td>
-                                    <td>{{ $banner->title }}</td>
+                                    <td>{{ $bannerItem->heading }}</td>
+                                    <td>{{ $bannerItem->btn_link }}</td>
+                                    <td>{{ $bannerItem->short_description }}</td>
+
+                                    <td>
+                                        <img src="/backend_assets/images/banners/{{ $bannerItem->image }}" width="70px"
+                                            height="70px">
+                                    </td>
+
                                     <td class="text-center">
-
-                                        <a title="view Banner List" href="/admin/banners/{{ $banner->id }}/banner-items"
-                                            class="btn btn-icon btn-circle btn-light"><i class="bi bi-binoculars"></i></a>
-
-                                        <a title="Edit" href="/admin/banners/{{ $banner->id }}/edit"
+                                        <a title="Edit"
+                                            href="/admin/banners/{{ $banner->id }}/banner-items/{{ $bannerItem->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
 
-                                        <button title="Delete" type="button"
-                                            class="btn btn-icon btn-danger btn-circle delete deleteBannerBtn"
-                                            value="{{ $banner->id }}"><i class="bi bi-trash-fill"></i></button>
+                                        <a title="Delete"
+                                            href="/admin/banners/{{ $banner->id }}/banner-items/{{ $bannerItem->id }}/edit"
+                                            class="btn btn-icon btn-danger btn-circle delete"><i
+                                                class="bi bi-trash-fill"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
 
                         </tbody>
+
+                        {{-- 'image', 'btn_link', 'heading',
+                        'sub_heading', 'short_description', 'banner_id' --}}
 
                     </table>
                 </div>

@@ -2,7 +2,7 @@
     use App\Contracts\AbstractInputFile;
     $inputTypes = AbstractInputFile::toArray();
 @endphp
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Create Participant Type')
 @section('content')
