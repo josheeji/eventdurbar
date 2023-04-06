@@ -3,7 +3,7 @@
     $inputTypes = AbstractInputFile::toArray();
 @endphp
 
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Create Event Types')
 @section('content')

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\DashboardController as AuthDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BannerItemController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\EventCertificateTemplateController;
 use App\Http\Controllers\EventController;
@@ -129,6 +130,17 @@ Route::prefix('/admin/banners')->group(function(){
     Route::get('/{id}/edit', [BannerController::class, 'edit']);
     Route::put('/{id}', [BannerController::class, 'update']);
     Route::delete('/{id}', [BannerController::class, 'destroy']);
+});
+
+
+Route::prefix('/admin/banners')->group(function(){
+    Route::get('/{banner_id}/banner-items',[BannerItemController::class, 'index']);
+    Route::get('/{banner_id}/banner-items/create',[BannerItemController::class, 'create']);
+    Route::post('/{banner_id}/banner-items',[BannerItemController::class, 'store']);
+    Route::get('/{banner_id}/banner-items/{id}/edit',[BannerItemController::class, 'edit']);
+    Route::put('/{banner_id}/banner-items/{id}',[BannerItemController::class, 'update']);
+    Route::delete('/{banner_id}/banner-items/{id}',[BannerItemController::class, 'destroy']);
+
 });
 
 
