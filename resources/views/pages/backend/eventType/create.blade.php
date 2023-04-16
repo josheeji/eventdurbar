@@ -29,7 +29,7 @@
             @endif
 
             {{-- <a href="" class="btn btn-primary btn-fw" class="col-md-3 mb-3" id="add_row_btn">Add Custom
-                Field</a> --}}
+            Field</a> --}}
 
             <form class="form-sample" action="/admin/event-types" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -53,28 +53,26 @@
                                     <th scope="col">Name</th>
 
                                     <th scope="col">Type</th>
-                                    <th></th>
-                                    <th scope="col">Tags </th>
-                                    {{-- <th>+</th> --}}
-
-
+                                    <th>Required</th>
+                                    <th scope="col">Options </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input type="text" name="label" id="label" placeholder="label"
-                                            value="" class="custom-select form-control">
+                                        <input type="text" name="custom_fields[][label]" id="label"
+                                            placeholder="Field label" value="" class="custom-select form-control">
 
                                     </td>
 
                                     <td>
-                                        <input type="text" name="event_type_name" id="event_name" placeholder="Event Type Name"
-                                            value="" class="custom-select form-control">
+                                        <input type="text" name="event_type_name" id="event_name"
+                                            placeholder="Event Field Name" value=""
+                                            class="custom-select form-control">
                                     </td>
 
                                     <td>
-                                        <select name="input_field" aria-placeholder="Select Input Type"
+                                        <select name="custom_fields[][input_field]" aria-placeholder="Select Input Type"
                                             class="custom-select form-control">
                                             @foreach (AbstractInputFile::toArray() as $value => $label)
                                                 <option value="<?= $value ?>"><?= $label ?></option>
@@ -83,14 +81,13 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <label for="mandatory">Is it mandatory?</label>
+                                            <label for="custom_fields[][mandatory]">Is it mandatory?</label>
                                             <input type="checkbox" id="mandatory" name="mandatory" value="1">
                                         </div>
                                     </td>
-
-
                                     <td>
-                                        <input type="text" name="tags" class="form-control" data-role="tagsinput">
+                                        <input type="text" name="custom_fields[][options]" class="form-control"
+                                            data-role="tagsinput">
                                     </td>
                                 </tr>
                             </tbody>

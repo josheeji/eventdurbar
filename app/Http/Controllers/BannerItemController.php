@@ -75,7 +75,8 @@ class BannerItemController extends Controller
     public function destroy($id, $itemId)
     {
         $banner = Banner::findOrFail($id);
-        $bannerItem = BannerItem::findOrFail($itemId); $bannerItem->delete();
+        $bannerItem = BannerItem::findOrFail($itemId);
+        $bannerItem->delete();
         return redirect('/admin/banners/' . $id . '/banner-items', compact('banner', 'bannerItem'))->with('message', 'BannerItem Deleted Successfully');
-   }
+    }
 }

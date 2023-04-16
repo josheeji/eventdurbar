@@ -23,7 +23,7 @@
                 </div>
             </section>
 
-           
+
             <!-- Section: Past Events -->
 
             {{-- <section style="min-height:500px;"> --}}
@@ -61,6 +61,11 @@
                                             <td>{{ $participant->participantType->name }}</td>
 
                                             <td class="text-center">
+                                                <a title="Download PDF"
+                                                    href="/admin/participants/{{ $participant->id }}/download-pdf"
+                                                    class="btn btn-primary" class="bi bi-arrow-down-circle-fill"><i
+                                                        class="bi bi-arrow-down-circle-fill"></i></a>
+
                                                 <a title="Download PDF"
                                                     href="/admin/participants/{{ $participant->id }}/download-pdf"
                                                     class="btn btn-primary" class="bi bi-arrow-down-circle-fill"><i

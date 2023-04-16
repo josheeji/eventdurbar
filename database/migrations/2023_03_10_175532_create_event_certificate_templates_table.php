@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('template_name');
             $table->string('url');
+            
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('participantType_id');
             $table->timestamps();

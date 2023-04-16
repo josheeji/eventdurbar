@@ -27,11 +27,9 @@
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="/admin/banners">
-                        <i class="bi bi-circle"></i><span>Banners</span>
+                        <i class="bi bi-circle"></i><span>Banner</span>
                     </a>
                 </li>
-               
-               
                 <li>
                     <a href="/admin/event-types">
                         <i class="bi bi-circle"></i><span>Events Types</span>
@@ -44,39 +42,24 @@
                 </li>
 
                 <li>
+                    <a href="/admin/event-templates">
+                        <i class="bi bi-circle"></i><span>Certificate Template</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/admin/participant-types">
                         <i class="bi bi-circle"></i><span> Participant Type</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/event-templates">
-                        <i class="bi bi-circle"></i><span>Event Templates</span>
-                    </a>
-                </li>
-                <li>
                     <a href="/admin/participants">
-                        <i class="bi bi-circle"></i><span> Participant</span>
+                        <i class="bi bi-circle"></i><span> Participants </span>
                     </a>
                 </li>
 
 
-                {{-- <li>
-                    <a href="/auth/posts">
-                        <i class="bi bi-circle"></i><span>Post</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/auth/banners">
-                        <i class="bi bi-circle"></i><span>Banner</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/auth/categories">
-                        <i class="bi bi-circle"></i><span>Category</span>
-                    </a>
-                </li> --}}
+
             </ul>
-
         <li class="nav-item">
             <form action="/admin/logout" method="post">
                 @csrf

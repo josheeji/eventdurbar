@@ -4,10 +4,11 @@
 @section('content')
 
     <!--  Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteBannerItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
+                {{-- <form action={{ '/admin/banners/' }} method="POST" id="delete_form"> --}}
                 <form action={{ '/admin/banners/' }} method="POST" id="delete_form">
                     @csrf
                     @method('delete')
@@ -47,12 +48,15 @@
                     <a href="/admin/banners/{{ $banner->id }}/banner-items/create" class="btn btn-primary btn-sm">
                         <h6>Add New Banner Item</h6>
                     </a>
+                    <a href="/admin/banners/" class="btn btn-primary btn-sm btn-dark">
+                        <h6>Back</h6>
+                    </a>
                     <hr>
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th width="150">S. No.</th>
-                                
+
                                 <th scope="col">Heading</th>
 
                                 <th scope="col">Btn Link</th>
@@ -84,18 +88,26 @@
                                             href="/admin/banners/{{ $banner->id }}/banner-items/{{ $bannerItem->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
 
-                                        <a title="Delete"
+                                        {{-- <a title="Delete"
                                             href="/admin/banners/{{ $banner->id }}/banner-items/{{ $bannerItem->id }}/edit"
                                             class="btn btn-icon btn-danger btn-circle delete"><i
-                                                class="bi bi-trash-fill"></i></a>
+                                                class="bi bi-trash-fill"></i></a> --}}
+
+                                        {{-- <button title="Delete" type="submit"
+                                            class="btn btn-icon btn-danger btn-circle delete deleteBannerItemBtn"
+                                            value="{{ $bannerItem->id }}"><i class="bi bi-trash-fill"></i></button> --}}
+
+
+                                        <button title="Delete" type="submit"
+                                            class="btn btn-icon btn-danger btn-circle delete deleteBannerItemBtn"
+                                            value="{{ $bannerItem->id }}" data-banner-id="{{ $banner->id }}"
+                                            data-banner-item-id="{{ $bannerItem->id }}"><i
+                                                class="bi bi-trash-fill"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
 
                         </tbody>
-
-                        {{-- 'image', 'btn_link', 'heading',
-                        'sub_heading', 'short_description', 'banner_id' --}}
 
                     </table>
                 </div>
@@ -109,15 +121,56 @@
 
     <script>
         $(document).ready(function() {
-            $('.deleteBannerBtn').click(function(e) {
+            $('.deleteBannerItemBtn').click(function(e) {
                 e.preventDefault();
 
-                var banner_id = $(this).val();
+                var bannerItem_id = $(this).val();
                 // $('#delete_event_id').val(event_id);
 
-                $('#delete_form').attr('action', '/admin/banners/' + banner_id);
+                $('#delete_form').attr('action', '/admin/banners/'.$id. +
+                    '/menu-items' + bannerItem_id);
+                // $('#delete_form').attr('action', '/admin/banners/' + banner_id);
                 $('#deleteModal').modal('show');
             });
         });
     </script>
+    {{-- 
+    <script>
+        $(document).ready(function() {
+            // Attach a click event handler to the delete button
+            $('.deleteBannerItemBtn').click(function() {
+                // Get the ID of the banner to which the banner item belongs
+                var bannerId = $(this).val();
+
+                // Get the ID of the banner item to be deleted
+                // var bannerItemId = $('#banner-item-id').val();
+
+                // Show the confirmation modal
+                $('#deleteModal').modal('show');
+
+                // Attach a click event handler to the modal's confirm button
+                $('#deleteModal').click(function() {
+                    // Hide the modal
+                    $('#deleteModal').modal('hide');
+
+                    // Send a DELETE request to the server
+                    $.ajax({
+                        url: '/admin/banners/' + bannerId + '/banner-items/' + bannerItemId,
+                        type: 'DELETE',
+                        success: function(result) {
+                            // Handle the successful response from the server
+                            console.log(result);
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle the error response from the server
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+        });
+    </script> --}}
+
+
+
 @endsection

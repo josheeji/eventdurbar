@@ -78,10 +78,10 @@
                                     </td>
 
                                     <td class="text-center">
-                                        {{-- <a title="Download certificate"
+                                        <a title="Download certificate"
                                             href="/admin/event-templates/{{ $eventTemplate->id }}/download-pdf"
                                             class="btn btn-primary" class="bi bi-arrow-down-circle-fill"><i
-                                                class="bi bi-arrow-down-circle-fill"></i></a> --}}
+                                                class="bi bi-arrow-down-circle-fill"></i></a>
 
                                         <a title="Edit" href="/admin/event-templates/{{ $eventTemplate->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>

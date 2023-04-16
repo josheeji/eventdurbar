@@ -50,7 +50,6 @@ class EventCertificateTemplateController extends Controller
         $input['url'] = $filename;
 
         $eventTemplate = EventCertificateTemplate::create($input);
-        $eventTemplate->save();
 
         $id = $eventTemplate->id;
         $file->move(resource_path('/views/eventTemplates/' . $id), $filename);
@@ -88,18 +87,18 @@ class EventCertificateTemplateController extends Controller
         $eventTemplate->event_id = $request->event_id;
 
         if ($request->hasFile('url')) {
-            $destination = '/views/eventTemplate/' . $eventTemplate->url;
+            $destination = resource_path('/views/eventTemplate/' ). $eventTemplate->url;
             if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('url');
             $filename = 'index.blade.php';
-            $file->move(resource_path('/views/eventTemplates/' . $id), $filename);
+            $file->move(resource_path('/views/eventTemplate/' . $id), $filename);
 
             $eventTemplate->url = $filename;
         }
 
-        if ($request->hasFile('template_files')) {           
+        if ($request->hasFile('template_files')) {
             foreach ($request->file('template_files') as $file) {
                 $destination = '/backend_assets/images/eventTemplates/' . $eventTemplate->template_files;
                 if (File::exists($destination)) {
@@ -119,5 +118,11 @@ class EventCertificateTemplateController extends Controller
         $template = EventCertificateTemplate::findOrFail($id);
         $template->delete();
         return redirect('/admin/event-templates')->with('message', 'Certificate Template Deleted Successfully..');
+    }
+
+
+
+    public function generatePdf()
+    {
     }
 }

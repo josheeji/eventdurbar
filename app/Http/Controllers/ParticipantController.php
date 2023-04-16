@@ -91,8 +91,6 @@ class ParticipantController extends Controller
         return view('pages.backend.participant.import', compact('events', 'participantTypes'));
     }
 
-
-
     public function storeExcel(Request $request)
     {
         $eventId = $request->input('event_id');
@@ -109,7 +107,6 @@ class ParticipantController extends Controller
         // dd($participant);
         $template = $participant->participantType;
         // dd($template);
-
 
         $resourcePath = public_path('/backend_assets/images/eventTemplates/' .  $template->id . '/');
 

@@ -97,7 +97,7 @@
 
 
     <!-- Footer -->
-    {{-- @include('layouts.frontend.inc.footer') --}}
+    @include('layouts.frontend.inc.footer')
 
 
     <!-- end wrapper -->

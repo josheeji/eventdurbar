@@ -94,8 +94,6 @@ Route::get(
     [EventCertificateTemplateController::class, 'generatePdf']
 );
 
-
-
 Route::prefix('/admin/participant-types')->middleware('auth')->group(function () {
     Route::get('/', [ParticipantTypeController::class, 'index']);
     Route::get('/create', [ParticipantTypeController::class, 'create']);
@@ -105,12 +103,13 @@ Route::prefix('/admin/participant-types')->middleware('auth')->group(function ()
     Route::delete('/{id}', [ParticipantTypeController::class, 'destroy']);
 });
 
-
 Route::prefix('/admin/participants')->middleware('auth')->group(function () {
     Route::get('/', [ParticipantController::class, 'index']);
+
     Route::get('/import', [ParticipantController::class, 'importExcel']);
     Route::post('/upload-excel-file', [ParticipantController::class, 'storeExcel']);
     // Route::get('/export', [ParticipantController::class, 'export'])->name('participants.export');
+    
     Route::get('/create', [ParticipantController::class, 'create']);
     Route::post('/', [ParticipantController::class, 'store']);
     Route::get('/{id}/edit', [ParticipantController::class, 'edit']);
@@ -123,8 +122,8 @@ Route::get(
     [ParticipantController::class, 'generatePdf']
 );
 
-Route::prefix('/admin/banners')->group(function(){
-    Route::get('/',[BannerController::class, 'index']);
+Route::prefix('/admin/banners')->group(function () {
+    Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
     Route::post('/', [BannerController::class, 'store']);
     Route::get('/{id}/edit', [BannerController::class, 'edit']);
@@ -133,24 +132,14 @@ Route::prefix('/admin/banners')->group(function(){
 });
 
 
-Route::prefix('/admin/banners')->group(function(){
-    Route::get('/{banner_id}/banner-items',[BannerItemController::class, 'index']);
-    Route::get('/{banner_id}/banner-items/create',[BannerItemController::class, 'create']);
-    Route::post('/{banner_id}/banner-items',[BannerItemController::class, 'store']);
-    Route::get('/{banner_id}/banner-items/{id}/edit',[BannerItemController::class, 'edit']);
-    Route::put('/{banner_id}/banner-items/{id}',[BannerItemController::class, 'update']);
-    Route::delete('/{banner_id}/banner-items/{id}',[BannerItemController::class, 'destroy']);
-
+Route::prefix('/admin/banners')->group(function () {
+    Route::get('/{banner_id}/banner-items', [BannerItemController::class, 'index']);
+    Route::get('/{banner_id}/banner-items/create', [BannerItemController::class, 'create']);
+    Route::post('/{banner_id}/banner-items', [BannerItemController::class, 'store']);
+    Route::get('/{banner_id}/banner-items/{id}/edit', [BannerItemController::class, 'edit']);
+    Route::put('/{banner_id}/banner-items/{id}', [BannerItemController::class, 'update']);
+    Route::delete('/{banner_id}/banner-items/{id}', [BannerItemController::class, 'destroy']);
 });
-
-
-
-
-
-
-
-
-
 
 
 
